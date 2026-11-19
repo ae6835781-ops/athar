@@ -1,4 +1,4 @@
-const CACHE_NAME = 'athar-app-v6';
+const CACHE_NAME = 'athar-offline-v7';
 const urlsToCache = [
   './',
   './index.html',
@@ -7,21 +7,32 @@ const urlsToCache = [
   './icon-512x512.png'
 ];
 
-self.addEventListener('install', event => {
+// 1. مرحلة التثبيت وحفظ الملفات
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-      .catch(err => console.log('فشل التخزين:', err))
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('تم فتح ذاكرة التخزين المؤقت');
+      // نستخدم Promise.all لضمان أن فشل ملف واحد لا يوقف حفظ باقي الملفات
+      return Promise.all(
+        urlsToCache.map(url => {
+          return cache.add(url).catch(err => {
+            console.warn('فشل حفظ ملف (قد يكون غير موجود):', url, err);
+          });
+        })
+      );
+    })
   );
-  self.skipWaiting();
+  self.skipWaiting(); // تفعيل عامل الخدمة فوراً
 });
 
-self.addEventListener('activate', event => {
+// 2. مرحلة التنشيط وحذف الذاكرة القديمة
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.map(cacheName => {
+        cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
+            console.log('جاري حذف الذاكرة القديمة:', cacheName);
             return caches.delete(cacheName);
           }
         })
@@ -31,30 +42,42 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-self.addEventListener('fetch', event => {
+// 3. مرحلة اعتراض الطلبات وتقديم النسخة المحفوظة عند انقطاع الإنترنت
+self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) return response;
-        return fetch(event.request)
-          .then(response => {
-            if (!response || response.status !== 200) return response;
-            const responseToCache = response.clone();
-            caches.open(CACHE_NAME).then(cache => {
-              cache.put(event.request, responseToCache);
-            });
-            return response;
-          })
-          .catch(() => {
-            if (event.request.mode === 'navigate') {
-              return caches.match('./index.html');
-            }
-          });
-      })
+    caches.match(event.request).then((response) => {
+      // إذا كان الملف موجوداً في الذاكرة، أرجعه فوراً (يعمل أوفلاين)
+      if (response) {
+        return response;
+      }
+      
+      const fetchRequest = event.request.clone();
+
+      return fetch(fetchRequest).then((response) => {
+        // إذا نجح الجلب من الإنترنت، احفظه في الذاكرة للاستخدام المستقبلي
+        if (!response || response.status !== 200 || response.type !== 'basic') {
+          return response;
+        }
+        const responseToCache = response.clone();
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, responseToCache);
+        });
+        return response;
+      }).catch(() => {
+        // إذا فشل الجلب (لا يوجد إنترنت)، قدم صفحة index.html كتطبيق بديل
+        if (event.request.mode === 'navigate' || 
+           (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))) {
+          return caches.match('./index.html');
+        }
+      });
+    })
   );
 });
 
-self.addEventListener('message', event => {
+// 4. الاستماع لأوامر التحديث من التطبيق
+self.addEventListener('message', (event) => {
   if (event.data && event.data.action === 'skipWaiting') {
     self.skipWaiting();
   }
