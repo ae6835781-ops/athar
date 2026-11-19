@@ -16,7 +16,7 @@
 <meta name="description" content="تطبيق أَثَر الإسلامي - قرآن، أحاديث، أذكار، ومواقيت صلاة">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="أَثَر | Athar">
+<meta name="apple-mobile-web-app-title" content="أَثَر">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192x192.png">
 
@@ -52,12 +52,9 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;-webkit-tap-highlight-color:transparent}
 
-/* ====== خلفية التطبيق بالصورة ====== */
 body {
   background-color: var(--bg);
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.88)),
-    url('background.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('background.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -68,13 +65,9 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
 }
-.light-mode body,
 body.light-mode {
-  background-image: 
-    linear-gradient(rgba(240, 253, 250, 0.88), rgba(240, 253, 250, 0.92)),
-    url('background.jpg');
+  background-image: linear-gradient(rgba(240, 253, 250, 0.9), rgba(240, 253, 250, 0.95)), url('background.jpg');
 }
-/* ========================================== */
 
 .splash-screen{position:fixed;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#000000,#111111);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1000;transition:opacity .5s ease-out}
 .splash-screen.hidden{opacity:0;pointer-events:none}
@@ -86,6 +79,7 @@ body.light-mode {
 .splash-credit span{display:block;font-size:.7rem;color:rgba(255,255,255,.4);margin-top:5px;font-weight:400}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
 @keyframes spin{to{transform:rotate(360deg)}}
+
 .header{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:15px 20px;border-radius:0 0 25px 25px;box-shadow:var(--shadow);position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;animation:slideDown .5s ease-out}
 .header h1{font-size:1.4rem;font-weight:800;display:flex;align-items:center;gap:8px}
 .header-icons{display:flex;gap:12px}
@@ -93,10 +87,12 @@ body.light-mode {
 .icon-btn:hover{background:rgba(255,255,255,.3);transform:scale(1.1)}
 .badge{position:absolute;top:-2px;right:-2px;background:#ef4444;color:#fff;font-size:.6rem;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;transition:opacity .3s ease}
 .badge.hidden{opacity:0;pointer-events:none}
+
 .container{padding:15px;max-width:600px;margin:0 auto}
 .section{display:none;animation:fadeIn .4s ease-out}
 .section.active{display:block}
 .section-title{margin-bottom:15px;color:var(--primary);font-size:1.2rem;font-weight:700;display:flex;align-items:center;gap:8px}
+
 .card{background:var(--card-bg);border-radius:16px;padding:16px;margin-bottom:15px;box-shadow:var(--shadow);border:1px solid var(--border);transition:var(--trans);position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;top:0;right:0;width:4px;height:100%;background:var(--primary)}
 .card:active{transform:scale(.98)}
@@ -108,12 +104,15 @@ body.light-mode {
 .hadith-bookmark-btn{background:transparent;border:1px solid var(--border);color:var(--text-sec);padding:6px 12px;border-radius:20px;cursor:pointer;font-size:.85rem;font-weight:600;display:flex;align-items:center;gap:6px;transition:var(--trans)}
 .hadith-bookmark-btn:hover{border-color:var(--gold);color:var(--gold)}
 .hadith-bookmark-btn.saved{background:var(--gold);color:#fff;border-color:var(--gold)}
+
 .hadith-banner,.bookmark-banner{background:linear-gradient(135deg,var(--gold),#d97706);color:#fff;padding:12px 15px;border-radius:12px;margin-bottom:15px;display:none;align-items:center;justify-content:space-between;box-shadow:var(--shadow);animation:slideDown .3s ease-out}
 .hadith-banner.active,.bookmark-banner.active{display:flex}
 .hadith-banner-btn,.bookmark-banner button{background:rgba(255,255,255,.2);border:none;color:#fff;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:.85rem}
+
 .sheikh-selector{background:var(--card-bg);padding:12px;border-radius:12px;margin-bottom:15px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;border:1px solid var(--border)}
 .sheikh-selector select{flex:1;background:var(--bg);border:2px solid var(--border);color:var(--text);font-weight:600;font-size:.95rem;outline:none;cursor:pointer;padding:8px 12px;border-radius:8px}
 .light-mode .sheikh-selector select{background:#f0fdfa;color:#1e293b;border-color:#e2e8f0}
+
 .search-box{background:var(--card-bg);padding:10px 14px;border-radius:12px;margin-bottom:15px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;border:2px solid var(--border);transition:var(--trans)}
 .search-box:focus-within{border-color:var(--primary);box-shadow:0 0 0 3px rgba(20,184,166,.15)}
 .search-box input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-weight:600;font-size:.95rem;font-family:'Cairo',sans-serif}
@@ -123,6 +122,7 @@ body.light-mode {
 .clear-search.active{display:block}
 .no-results{text-align:center;padding:30px 15px;color:var(--text-sec);font-weight:600}
 .no-results-icon{font-size:2.5rem;margin-bottom:10px;opacity:.5}
+
 .surah-item{display:flex;justify-content:space-between;align-items:center;padding:14px;background:var(--card-bg);border-radius:14px;margin-bottom:10px;box-shadow:var(--shadow);cursor:pointer;transition:var(--trans);border:1px solid transparent;position:relative}
 .surah-item:hover{border-color:var(--primary);transform:translateX(-3px)}
 .surah-item.bookmarked{border:2px solid var(--gold);background:var(--gold-bg)}
@@ -134,13 +134,16 @@ body.light-mode {
 .surah-meta{font-size:.75rem;color:var(--text-sec);margin-top:2px}
 .listen-btn{background:var(--primary);border:none;width:40px;height:40px;border-radius:50%;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:var(--trans);flex-shrink:0}
 .listen-btn:hover{background:var(--primary-dark);transform:scale(1.1)}
+
 .tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:15px;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab{padding:8px 16px;background:var(--card-bg);border:2px solid var(--border);border-radius:20px;cursor:pointer;white-space:nowrap;font-weight:600;font-size:.85rem;transition:var(--trans);color:var(--text)}
 .tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+
 .dhikr-card{background:var(--card-bg);padding:18px;border-radius:14px;margin-bottom:12px;box-shadow:var(--shadow);text-align:center;border:1px solid var(--border)}
 .dhikr-text{font-size:1.1rem;font-weight:600;margin-bottom:12px;line-height:1.8}
 .dhikr-count{display:inline-block;background:var(--primary);color:#fff;padding:4px 14px;border-radius:15px;font-size:.85rem;font-weight:bold}
+
 .player-fixed{position:fixed;bottom:90px;left:15px;right:15px;background:var(--card-bg);padding:12px 15px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,.5);display:none;flex-direction:column;gap:10px;z-index:90;border:1px solid var(--primary);animation:slideUp .3s ease-out}
 .player-fixed.active{display:flex}
 .player-top{display:flex;align-items:center;gap:12px}
@@ -156,12 +159,15 @@ body.light-mode {
 .progress-bar{flex:1;-webkit-appearance:none;appearance:none;height:5px;background:var(--border);border-radius:3px;outline:none;cursor:pointer}
 .progress-bar::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;background:var(--primary);border-radius:50%;cursor:pointer}
 .progress-bar::-moz-range-thumb{width:14px;height:14px;background:var(--primary);border-radius:50%;cursor:pointer;border:none}
+
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--card-bg);display:flex;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:8px 0;box-shadow:0 -4px 20px rgba(0,0,0,.5);z-index:100;border-top:1px solid var(--border);-webkit-overflow-scrolling:touch}
 .bottom-nav::-webkit-scrollbar{display:none}
 .nav-item{display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--text-sec);font-size:.6rem;font-weight:600;transition:var(--trans);cursor:pointer;min-width:25vw;flex-shrink:0;padding:5px 0}
 .nav-item.active{color:var(--primary);transform:translateY(-3px)}
 .nav-item span:first-child{font-size:1.15rem}
+
 .footer{text-align:center;padding:15px 10px;color:var(--text-sec);font-size:.65rem;margin-top:20px;opacity:.6}
+
 .surah-fullscreen{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:1000;display:none;flex-direction:column;animation:fadeIn .3s ease-out}
 .surah-fullscreen.active{display:flex}
 .surah-header{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;padding:15px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
@@ -185,16 +191,20 @@ body.light-mode {
 .btn-save{background:var(--primary);color:#fff}
 .btn-save.saved{background:var(--gold)}
 .btn-close-modal{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+
 .modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);z-index:200;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
 .modal.active{display:flex}
 .modal-content{background:var(--card-bg);padding:20px;border-radius:20px;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;animation:fadeIn .3s ease-out;position:relative}
 .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;border-bottom:2px solid var(--border);padding-bottom:10px;position:sticky;top:0;background:var(--card-bg);z-index:10}
 .close-modal{background:none;border:none;font-size:1.5rem;color:var(--text-sec);cursor:pointer}
+
 .toast{position:fixed;bottom:110px;left:50%;transform:translateX(-50%) translateY(100px);background:#1e293b;color:#fff;padding:12px 24px;border-radius:25px;font-weight:600;opacity:0;transition:all .4s ease;z-index:3000;box-shadow:0 10px 20px rgba(0,0,0,.5)}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideDown{from{transform:translateY(-100%)}to{transform:translateY(0)}}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+
 .tasbih-container{text-align:center;padding:20px}
 .tasbih-display{font-size:4rem;font-weight:800;color:var(--primary);margin:20px 0;font-family:'Amiri',serif}
 .tasbih-cycles{font-size:.95rem;font-weight:700;color:var(--gold);margin-bottom:15px;background:var(--gold-bg);padding:8px 16px;border-radius:20px;display:inline-block;border:1px solid var(--gold)}
@@ -203,6 +213,7 @@ body.light-mode {
 .tasbih-btn:active{transform:scale(.95)}
 .tasbih-controls{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .tasbih-ctrl-btn{padding:10px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card-bg);color:var(--text);cursor:pointer;font-weight:600;font-size:.9rem}
+
 .names-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
 .name-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:14px 8px;text-align:center;cursor:pointer;transition:var(--trans);position:relative;user-select:none}
 .name-card:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:var(--shadow)}
@@ -213,6 +224,7 @@ body.light-mode {
 .name-arabic{font-size:1.25rem;font-weight:800;color:var(--primary);font-family:'Amiri',serif;margin-bottom:4px;transition:var(--trans)}
 .name-meaning{font-size:.75rem;color:var(--text-sec);display:none;margin-top:6px;padding-top:6px;border-top:1px dashed var(--border);line-height:1.5}
 .name-card.expanded .name-meaning{display:block}
+
 .prayer-hero{position:relative;padding:15px;border-radius:20px;margin-bottom:15px;box-shadow:0 8px 20px rgba(0,0,0,0.5);transition:all 1s ease;overflow:hidden;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);min-height:160px;color:#fff;display:flex;flex-direction:column;justify-content:space-between}
 .prayer-hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.15),transparent 50%);pointer-events:none}
 .prayer-hero::after{content:'';position:absolute;bottom:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.08);filter:blur(30px);pointer-events:none}
@@ -245,6 +257,7 @@ body.light-mode {
 .prayer-hero.theme-night .star{position:absolute;background:#fff;border-radius:50%;animation:twinkle 2s infinite alternate;box-shadow:0 0 6px rgba(255,255,255,.8)}
 .prayer-hero.theme-night .moon{position:absolute;top:15px;left:15px;width:35px;height:35px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fef9c3,#fde68a);box-shadow:0 0 20px rgba(254,240,138,.6),inset -6px -6px 0 rgba(202,138,4,.2);z-index:1}
 @keyframes twinkle{0%{opacity:.2;transform:scale(.8)}100%{opacity:1;transform:scale(1.2)}}
+
 .prayer-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
 .prayer-item{display:flex;align-items:center;justify-content:space-between;background:var(--card-bg);padding:15px;border-radius:14px;border:1px solid var(--border);transition:var(--trans);position:relative;overflow:hidden}
 .prayer-item.next{border-color:var(--primary);background:linear-gradient(90deg,rgba(20,184,166,.08),transparent);box-shadow:0 4px 12px rgba(20,184,166,.15)}
@@ -259,16 +272,19 @@ body.light-mode {
 .prayer-time{font-size:.85rem;color:var(--text-sec);font-family:monospace;direction:ltr;margin-top:2px}
 .prayer-checkbox{width:32px;height:32px;border:2px solid var(--border);border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--trans);font-size:1.2rem;color:transparent;flex-shrink:0}
 .prayer-checkbox.checked{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(20,184,166,.3)}
+
 .angel-card{display:flex;align-items:flex-start;gap:15px;background:var(--card-bg);padding:16px;border-radius:14px;margin-bottom:12px;box-shadow:var(--shadow);border:1px solid var(--border);transition:var(--trans)}
 .angel-card:hover{transform:translateX(-3px);border-color:var(--primary)}
 .angel-icon{font-size:2rem;flex-shrink:0;background:var(--gold-bg);width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--gold)}
 .angel-info h3{font-size:1.05rem;font-weight:700;color:var(--primary);margin-bottom:4px}
 .angel-info p{font-size:.9rem;color:var(--text-sec);line-height:1.6}
+
 .whatsapp-fab{position:fixed;bottom:90px;left:20px;width:45px;height:45px;background-color:#25D366;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 12px rgba(37,211,102,0.4);z-index:95;cursor:grab;transition:opacity 0.5s ease,transform 0.2s,box-shadow 0.2s;text-decoration:none;user-select:none;touch-action:none;opacity:1}
 .whatsapp-fab.faded{opacity:0.5 !important}
 .whatsapp-fab:active{cursor:grabbing;transform:scale(0.95)}
 .whatsapp-fab.pulse{animation:pulseFab 2s infinite}
 @keyframes pulseFab{0%,100%{box-shadow:0 4px 12px rgba(37,211,102,0.4)}50%{box-shadow:0 4px 20px rgba(37,211,102,0.7)}}
+
 .radio-card{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .radio-card .radio-icon{font-size:1.5rem;background:var(--gold-bg);width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .radio-card .radio-info{flex:1;min-width:0}
@@ -278,47 +294,98 @@ body.light-mode {
 .radio-loading{text-align:center;padding:40px 15px;color:var(--text-sec);font-weight:600}
 .radio-loading .spinner{width:40px;height:40px;border:4px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 15px}
 
-/* ====== تنسيقات البوصلة (مُصلحة ومُبسطة) ====== */
-.qibla-container { text-align: center; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+/* ====== تنسيقات البوصلة الاحترافية ====== */
+.qibla-container { text-align: center; padding: 20px 10px; display: flex; flex-direction: column; align-items: center; }
+.qibla-compass-wrapper {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 10px auto 20px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #334155, #0f172a, #334155);
+    padding: 4px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0,0,0,0.8);
+}
 .qibla-compass {
-    width: 280px; height: 280px; border-radius: 50%;
-    background: var(--card-bg); border: 4px solid var(--primary);
-    position: relative; margin: 20px auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3), inset 0 0 20px rgba(0,0,0,0.2);
-    transition: transform 0.15s ease-out;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--card-bg);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--border);
 }
 .compass-labels span { 
-    position: absolute; font-weight: 800; color: var(--text-sec); font-size: 1rem; 
+    position: absolute; font-weight: 800; color: var(--text-sec); font-size: 0.9rem; 
 }
-.label-n { top: 10px; left: 50%; transform: translateX(-50%); color: #ef4444; font-size: 1.2rem; }
-.label-s { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.label-n { top: 12px; left: 50%; transform: translateX(-50%); color: #ef4444; font-size: 1.1rem; }
+.label-s { bottom: 12px; left: 50%; transform: translateX(-50%); }
 .label-e { right: 12px; top: 50%; transform: translateY(-50%); }
 .label-w { left: 12px; top: 50%; transform: translateY(-50%); }
+
+/* القرص الذي يدور ويحمل الكعبة */
+.compass-dial {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.15s linear; /* حركة سلسة جداً */
+}
+.kaaba-marker {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.6));
+    z-index: 4;
+}
+
+/* الإبرة الثابتة التي تشير للشمال دائماً */
 .compass-needle {
-    position: absolute; top: 50%; left: 50%; width: 4px; height: 40%;
-    background: linear-gradient(to top, transparent 0%, #ef4444 100%);
-    transform-origin: bottom center; transform: translate(-50%, -100%);
-    border-radius: 2px 2px 0 0; z-index: 2;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 40%;
+    background: linear-gradient(to bottom, #ef4444 50%, transparent 50%);
+    z-index: 2;
+    border-radius: 2px;
 }
 .compass-center-dot {
-    position: absolute; top: 50%; left: 50%; width: 16px; height: 16px;
-    background: var(--text); border: 3px solid var(--primary);
-    border-radius: 50%; transform: translate(-50%, -50%); z-index: 5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    background: var(--text);
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
-.kaaba-icon {
-    position: absolute; top: 12px; left: 50%;
-    transform: translateX(-50%);
-    font-size: 2.2rem; z-index: 4;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
-    line-height: 1;
-}
+
 .qibla-info { 
-    font-size: 1.05rem; font-weight: 700; color: var(--primary); 
-    margin-top: 15px; background: var(--gold-bg); padding: 10px 20px; 
-    border-radius: 20px; border: 1px solid var(--gold);
-    text-align: center;
+    font-size: 1rem; font-weight: 700; color: var(--primary); 
+    margin-top: 15px; background: var(--gold-bg); padding: 12px 20px; 
+    border-radius: 12px; border: 1px solid var(--gold);
+    text-align: center; width: 100%; max-width: 320px;
 }
-.qibla-note { font-size: 0.8rem; color: var(--text-sec); margin-top: 10px; text-align: center; }
+.qibla-note { font-size: 0.8rem; color: var(--text-sec); margin-top: 15px; text-align: center; line-height: 1.6; }
+
+.qibla-activate-btn, .qibla-offline-btn {
+    margin-top: 15px; width: 100%; max-width: 320px; 
+    padding: 14px; border-radius: 12px; border: none; 
+    font-size: 1rem; font-weight: 700; cursor: pointer; 
+    transition: var(--trans); display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.qibla-activate-btn { background: var(--primary); color: #fff; }
+.qibla-activate-btn:active { transform: scale(0.97); }
+.qibla-activate-btn:disabled { background: var(--text-sec); cursor: not-allowed; }
+.qibla-offline-btn { background: var(--gold); color: #000; }
 /* ========================================== */
 </style>
 </head>
@@ -330,13 +397,15 @@ body.light-mode {
 <div class="splash-loading"></div>
 <div class="splash-credit">Developed by Ahmed Emad Farhoud<span>© 2026 جميع الحقوق محفوظة</span></div>
 </div>
+
 <header class="header">
-<h1><span>🕌</span> أَثَر | Athar</h1>
+<h1><span>🕌</span> أَثَر</h1>
 <div class="header-icons">
 <button class="icon-btn" onclick="openNotifications()" title="الإشعارات">🔔<span class="badge" id="notifBadge">3</span></button>
 <button class="icon-btn" onclick="toggleTheme()" title="الوضع الداكن/الفاتح" id="themeBtn">☀️</button>
 </div>
 </header>
+
 <div class="container">
 <section id="hadith-section" class="section active">
 <h2 class="section-title">📜 أحاديث تأخذ بالعقل والقلب</h2>
@@ -349,6 +418,7 @@ body.light-mode {
 </div>
 <div id="hadith-container"></div>
 </section>
+
 <section id="quran-section" class="section">
 <h2 class="section-title">📖 القرآن الكريم - مصحف المدينة</h2>
 <div id="bookmarkBanner" class="bookmark-banner">
@@ -363,6 +433,7 @@ body.light-mode {
 <div class="search-box"><span class="search-icon">🔍</span><input type="text" id="surahSearch" placeholder="ابحث عن سورة..." oninput="filterSurahs()"><button class="clear-search" id="clearSearchBtn" onclick="clearSearch()">✕</button></div>
 <div id="quran-container"></div>
 </section>
+
 <section id="adhkar-section" class="section">
 <h2 class="section-title">🤲 حصن المسلم</h2>
 <div class="tabs">
@@ -379,12 +450,13 @@ body.light-mode {
 </div>
 <div id="adhkar-container"></div>
 </section>
+
 <section id="radio-section" class="section">
 <h2 class="section-title">📻 الإذاعات المباشرة</h2>
 <p style="font-size:.78rem;color:var(--text-sec);margin-bottom:12px;text-align:center">ابحث عن أي إذاعة في العالم - نتائج حقيقية ومباشرة</p>
 <div class="search-box">
 <span class="search-icon">🔍</span>
-<input type="text" id="radioSearch" placeholder="اكتب اسم الإذاعة... (مثال: قرآن، مصر، BBC)" oninput="handleRadioSearch()">
+<input type="text" id="radioSearch" placeholder="اكتب اسم الإذاعة... (مثال: قرآن، مصر)" oninput="handleRadioSearch()">
 <button class="clear-search" id="clearRadioSearchBtn" onclick="clearRadioSearch()">✕</button>
 </div>
 <div class="tabs" id="radioTabs">
@@ -395,12 +467,10 @@ body.light-mode {
 <div class="tab" onclick="filterRadiosByCategory('other', this)">🎵 أخرى</div>
 </div>
 <div id="radio-container">
-<div class="radio-loading">
-<div class="spinner"></div>
-<div>جاري تحميل الإذاعات الحقيقية...</div>
-</div>
+<div class="radio-loading"><div class="spinner"></div><div>جاري تحميل الإذاعات...</div></div>
 </div>
 </section>
+
 <section id="tasbih-section" class="section">
 <h2 class="section-title">📿 المسبحة الإلكترونية</h2>
 <div class="tasbih-container">
@@ -409,23 +479,26 @@ body.light-mode {
 <div class="tasbih-display" id="tasbihCount">0</div>
 <button class="tasbih-btn" onclick="incrementTasbih()">+</button>
 <div class="tasbih-controls">
-<button class="tasbih-ctrl-btn" onclick="resetTasbihCount()">🔄 تصفير العداد</button>
+<button class="tasbih-ctrl-btn" onclick="resetTasbihCount()">🔄 تصفير</button>
 <button class="tasbih-ctrl-btn" onclick="resetTasbihAll()" style="color:#ef4444;border-color:#fca5a5">⚠️ تصفير الكل</button>
 <button class="tasbih-ctrl-btn" onclick="setTasbihTarget()">🎯 هدف</button>
 </div>
 </div>
 </section>
+
 <section id="names-section" class="section">
 <h2 class="section-title">✨ أسماء الله الحسنى</h2>
 <p style="font-size:.8rem;color:var(--text-sec);margin-bottom:12px;text-align:center">اضغط على الاسم لرؤية معناه • اضغط مطولاً للحفظ 🔖</p>
 <div class="search-box"><span class="search-icon">🔍</span><input type="text" id="namesSearch" placeholder="ابحث عن اسم..." oninput="filterNames()"></div>
 <div class="names-grid" id="namesContainer"></div>
 </section>
+
 <section id="angels-section" class="section">
 <h2 class="section-title">👼 الملائكة وأعمالهم</h2>
 <p style="font-size:.8rem;color:var(--text-sec);margin-bottom:15px;text-align:center">آمنّا بهم جميعاً، لا نفرق بين أحد منهم</p>
 <div id="angels-container"></div>
 </section>
+
 <section id="prayer-section" class="section">
 <h2 class="section-title">⏰ مواقيت الصلاة</h2>
 <div class="prayer-hero theme-morning" id="prayerHero">
@@ -449,29 +522,45 @@ body.light-mode {
 <div class="prayer-list" id="prayerList"></div>
 </section>
 
-<!-- ====== قسم البوصلة ====== -->
+<!-- ====== قسم البوصلة الاحترافي ====== -->
 <section id="qibla-section" class="section">
     <h2 class="section-title">🧭 اتجاه القبلة</h2>
     <div class="qibla-container">
-        <div class="qibla-compass" id="qiblaCompass">
-            <div class="compass-labels">
-                <span class="label-n">شمال</span>
-                <span class="label-e">شرق</span>
-                <span class="label-s">جنوب</span>
-                <span class="label-w">غرب</span>
+        <div class="qibla-compass-wrapper">
+            <div class="qibla-compass">
+                <div class="compass-labels">
+                    <span class="label-n">N</span>
+                    <span class="label-e">E</span>
+                    <span class="label-s">S</span>
+                    <span class="label-w">W</span>
+                </div>
+                <div class="compass-dial" id="compassDial">
+                    <div class="kaaba-marker">🕋</div>
+                </div>
+                <div class="compass-needle"></div>
+                <div class="compass-center-dot"></div>
             </div>
-            <div class="compass-needle"></div>
-            <div class="compass-center-dot"></div>
-            <div class="kaaba-icon" id="kaabaIcon">🕋</div>
         </div>
-        <div class="qibla-info" id="qiblaInfo">جاري تحديد الموقع والاتجاه...</div>
-        <p class="qibla-note">💡 امسك الهاتف بشكل مسطح، وستدور البوصلة تلقائياً مع حركة الهاتف.</p>
+        
+        <div class="qibla-info" id="qiblaInfo">اضغط الزر أدناه لتفعيل البوصلة</div>
+        
+        <button class="qibla-activate-btn" id="activateQiblaBtn" onclick="activateCompass()">
+            🧭 تفعيل البوصلة وتحديد الموقع
+        </button>
+        
+        <button class="qibla-offline-btn" id="offlineQiblaBtn" onclick="useOfflineQibla()" style="display:none;">
+            📍 استخدام آخر موقع محفوظ (يعمل أوفلاين)
+        </button>
+        
+        <p class="qibla-note">💡 ملاحظة هامة: بسبب سياسات الخصوصية في الهواتف، يجب الضغط على زر "تفعيل" للسماح بالوصول للموقع ومستشعر الحركة لمرة واحدة فقط. بعد ذلك، سيعمل التطبيق بدون إنترنت.</p>
     </div>
 </section>
 <!-- ========================================== -->
 
 </div>
+
 <a href="https://wa.me/201102594058?text=مرحباً،%20أواجه%20مشكلة%20أو%20استفسار%20في%20تطبيق%20أثر" target="_blank" class="whatsapp-fab pulse" id="whatsappFab" title="تواصل مع المطور">💬</a>
+
 <div class="surah-fullscreen" id="surahFullscreen">
 <div class="surah-header">
 <button class="back-btn" onclick="closeFullscreen()">←</button>
@@ -484,6 +573,7 @@ body.light-mode {
 <button class="action-btn btn-close-modal" onclick="closeFullscreen()">إغلاق</button>
 </div>
 </div>
+
 <div class="player-fixed" id="audioPlayer">
 <div class="player-top">
 <div class="player-info"><div class="player-title" id="playerTitle">-</div><div class="player-sheikh" id="playerSheikh">-</div></div>
@@ -501,6 +591,7 @@ body.light-mode {
 </div>
 <audio id="mainAudio" crossorigin="anonymous"></audio>
 </div>
+
 <nav class="bottom-nav">
 <div class="nav-item active" onclick="switchTab('hadith-section',this)"><span>📜</span><span>أحاديث</span></div>
 <div class="nav-item" onclick="switchTab('quran-section',this)"><span>📖</span><span>القرآن</span></div>
@@ -510,9 +601,11 @@ body.light-mode {
 <div class="nav-item" onclick="switchTab('names-section',this)"><span>✨</span><span>أسماء الله</span></div>
 <div class="nav-item" onclick="switchTab('angels-section',this)"><span>👼</span><span>الملائكة</span></div>
 <div class="nav-item" onclick="switchTab('prayer-section',this)"><span>⏰</span><span>مواقيت</span></div>
-<div class="nav-item" onclick="switchTab('qibla-section',this); setTimeout(initQiblaCompass, 300);"><span>🧭</span><span>البوصلة</span></div>
+<div class="nav-item" onclick="switchTab('qibla-section',this)"><span>🧭</span><span>البوصلة</span></div>
 </nav>
+
 <div class="footer">Developed by Ahmed Emad Farhoud © 2026</div>
+
 <div class="modal" id="notifModal">
 <div class="modal-content">
 <div class="modal-header"><h3>🔔 الإشعارات</h3><button class="close-modal" onclick="toggleModal('notifModal')">✕</button></div>
@@ -524,7 +617,9 @@ body.light-mode {
 </div>
 </div>
 <div class="toast" id="toast"></div>
+
 <script>
+// [تم الاحتفاظ بجميع بيانات الأحاديث، السور، الأذكار، الأسماء، والملائكة كما هي لضمان عدم حدوث أخطاء]
 const hadithsData = [{t:"إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى.",e:"الله بيحاسبك على نيتك مش بس على شكلك الخارجي. لو نويت الخير وهمّت تعملو ومنعتك ظروف، الله يكتبهولك أجر كامل."},{t:"من كان يؤمن بالله واليوم الآخر فليقل خيراً أو ليصمت.",e:"الكلمة زي الرصاصة، لو طلقت مش هترجع. لو مش هتقول كلمة تنفعك، الأفضل تسكت وتسلم."},{t:"لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه.",e:"الإيمان إنك تحس بغيرك. لو عايز نجاح، حب لأخوك النجاح. القلب اللي بيحب للناس الخير، الله بيفتح له أبوابه."},{t:"المسلم من سلم المسلمون من لسانه ويده.",e:"أخطر حاجة في الإنسان لسانه وإيده. المسلم الحقيقي هو اللي الناس تانمينة منه على سمعتهم وأموالهم."},{t:"من سلك طريقاً يلتمس فيه علماً سهل الله له به طريقاً إلى الجنة.",e:"العلم النافع هو اللي يقربك من ربنا. كل ما تقعد تتعلم حاجة تنفعك، الله بيهون لك طريق الجنة."},{t:"تبسمك في وجه أخيك صدقة.",e:"مش لازم تكون غني عشان تتصدق. ابتسامة صادقة بتنشط قلب أخوك وتزيل همّه، والله بيكتبها لك صدقة."},{t:"الدال على الخير كفاعله.",e:"لو عرفتك على طريق خير أو نصحتك بكلمة طيبة، الله بيكتب لك أجر زي اللي عمل الخير ده."},{t:"اتق الله حيثما كنت، وأتبع السيئة الحسنة تمحها.",e:"خاف من الله في الخلاء والعلن، ولو غلطت سارع بالتوبة والاستغفار تمحي الذنب فوراً."},{t:"من أصبح منكم آمناً في سربه، معافى في جسده، عنده قوت يومه، فكأنما حيزت له الدنيا.",e:"لو عندك أمان في بيتك، وصحة في جسمك، وأكل يومك، اعتبر نفسك أغنى إنسان في الدنيا."},{t:"الكلمة الطيبة صدقة.",e:"كلمة 'صباح الخير' أو 'جزاك الله خيراً' صدقات بتثقل ميزان حسناتك من غير ما تصرف جنيه."},{t:"ما نقصت صدقة من مال، وما زاد الله عبداً بعفو إلا عزاً.",e:"مستحيل الصدقة تنقص رزقك، الله بيباركلك فيه. ولو سامحت حد، الله بيرفع قدرك ويعزك."},{t:"خيركم من تعلم القرآن وعلمه.",e:"تعلم القرآن وتدبره ثم تعليمه لأهلك، ده أعظم استثمار ممكن تعمله في حياتك."},{t:"لا تغضب، ولك الجنة.",e:"الغضب بيفقد الإنسان عقله. لو حسيت بالغضب جاي، غير وضعك أو اتوضأ. السيطرة على الغضب قوة توصلك للجنة."},{t:"من حسن إسلام المرء تركه ما لا يعنيه.",e:"انشغالك بعيوب الناس يضيع وقتك. ركز في إصلاح نفسك وعلاقتك بربك."},{t:"الطهور شطر الإيمان.",e:"النظافة مش بس نظافة الجسم، دي كمان نظافة القلب من الحسد. الوضوء بيشيل الذنوب مع الماء."},{t:"من صلى عليّ صلاة صلى الله عليه بها عشراً.",e:"الصلاة على النبي مش بس ذكر، دي مفتاح لكل خير ومغفرة للذنوب ورفع للدرجات."},{t:"الدين النصيحة.",e:"الدين كله مبني على النصح لله ولكتابه ولرسوله ولأئمة المسلمين وعامتهم. كن ناصحاً أميناً."},{t:"من غشنا فليس منا.",e:"الأمانة في البيع والشراء والعمل هي أساس ثقة الناس فيك، والغش بيفقدك بركة رزقك."},{t:"المؤمن القوي خير وأحب إلى الله من المؤمن الضعيف.",e:"القوة هنا قوة الإرادة والعزيمة على الطاعة، وليس قوة البدن فقط. احرص على ما ينفعك."},{t:"احفظ الله يحفظك.",e:"لو حافظت على حدود الله وفرائضه، هتلاقيه معاك في كل خطوة وبيحميك من كل شر."},{t:"إن الله جميل يحب الجمال.",e:"النظافة والترتيب وحسن المظهر والخلق كل ده من الجمال الذي يحبه الله."},{t:"لا تحقرن من المعروف شيئاً.",e:"حتى لو شئ بسيط زي إزاحة حجر من الطريق أو كلمة طيبة، متستهنش بيه، الله بيكافئ عليه."},{t:"من كان يؤمن بالله واليوم الآخر فليكرم جاره.",e:"حق الجار عظيم في الإسلام. حسن معاملتك لجارك دليل على قوة إيمانك."},{t:"الحياء شعبة من الإيمان.",e:"الحياء بيخليك تبتعد عن المعاصي والأفعال القبيحة، وهو علامة على نقاء قلبك."},{t:"من يرد الله به خيراً يفقهه في الدين.",e:"فهم الدين مش حفظ بس، ده فهم لكيفية تطبيقه في حياتك اليومية بشكل صحيح."},{t:"إن الله لا ينظر إلى صوركم وأموالكم، ولكن ينظر إلى قلوبكم وأعمالكم.",e:"المقياس عند الله هو نقاء القلب وصحة العمل، مش المظاهر الخارجية أو الثراء."},{t:"أحب الأعمال إلى الله أدومها وإن قل.",e:"الاستمرار في العمل الصالح ولو كان بسيطاً أفضل من عمل كبير تنقطع عنه بسرعة."},{t:"من نفس عن مؤمن كربة من كرب الدنيا نفس الله عنه كربة من كرب يوم القيامة.",e:"مساعدة الناس وإزالة الهم عنهم بتخلي الله يزيل همك يوم ما تكون محتاجه جداً."},{t:"كلمتان خفيفتان على اللسان، ثقيلتان في الميزان، حبيبتان إلى الرحمن: سبحان الله وبحمده، سبحان الله العظيم.",e:"أذكار بسيطة جداً بس أجرها ضخم جداً، خليها دايماً على لسانك."},{t:"من قال حين يصبح وحين يمسي: سبحان الله وبحمده مائة مرة، لم يأت أحد يوم القيامة بأفضل مما جاء به إلا أحد قال مثل ما قال أو زاد عليه.",e:"مداومة هذا الذكر بتضمن لك مكانة عالية جداً يوم القيامة."},{t:"الصلوات الخمس، والجمعة إلى الجمعة، ورمضان إلى رمضان، مكفرات لما بينهن إذا اجتنبت الكبائر.",e:"المحافظة على الصلوات وصيام رمضان بيمحي الذنوب الصغيرة زي ما الماء بيمحي الوسخ."},{t:"من توضأ فأحسن الوضوء ثم قال: أشهد أن لا إله إلا الله وحده لا شريك له، وأشهد أن محمداً عبده ورسوله، فتحت له أبواب الجنة الثمانية.",e:"هذا الدعاء بعد الوضوء مفتاح لدخول الجنة من أي باب تحب."},{t:"من قرأ آية الكرسي دبر كل صلاة مكتوبة، لم يمنعه من دخول الجنة إلا أن يموت.",e:"المحافظة على آية الكرسي بعد كل صلاة بتضمن لك الحماية ودخول الجنة بإذن الله."},{t:"من صلى البردين دخل الجنة.",e:"المحافظة على صلاة الفجر والعصر تحديداً هي علامة على صدق الإيمان ووسيلة لدخول الجنة."},{t:"من غدا إلى المسجد أو راح، أعد الله له في الجنة نزلاً كلما غدا أو راح.",e:"كل خطوة بتخطيها للمسجد بتكون سبب في تجهيز مكان ليك في الجنة."},{t:"من بنى لله مسجداً ولو كمفحص قطاة، بنى الله له بيتاً في الجنة.",e:"المساهمة في بناء أو صيانة بيوت الله لها أجر عظيم جداً ومكانة خاصة في الجنة."},{t:"من صام يوماً في سبيل الله، باعد الله وجهه عن النار سبعين خريفاً.",e:"صيام النفل، خاصة في سبيل الله، هو درع واقي من عذاب النار."},{t:"من قام رمضان إيماناً واحتساباً، غفر له ما تقدم من ذنبه.",e:"صلاة التراويح وقيام الليل في رمضان بفرصتك ذهبية لمحو كل ذنوبك الماضية."},{t:"من قام ليلة القدر إيماناً واحتساباً، غفر له ما تقدم من ذنبه.",e:"ليلة القدر أفضل من ألف شهر، قيامها بيمحي الماضي ويفتح لك صفحة جديدة مع الله."},{t:"من حج لله فلم يرفث ولم يفسق، رجع كيوم ولدته أمه.",e:"الحج المبرور هو فرصة ذهبية للعودة نقياً من كل الذنوب وكأنك مولود جديد."},{t:"العمرة إلى العمرة كفارة لما بينهما.",e:"أداء العمرة بشكل متكرر يكفر الذنوب الصغيرة ويرفع الدرجات."},{t:"من جهز غازياً في سبيل الله، فقد غزا.",e:"دعم المجاهدين أو من يطلون العلم أو ينشرون الخير لك أجر المشاركة الفعلية."},{t:"من كف غضبه، ستر الله عورته.",e:"السيطرة على الغضب ليست ضعفاً، بل هي قوة يكرمك الله بها بستر عيوبك."},{t:"من رحم ولو ذبيحة عصفور، رحمه الله يوم القيامة.",e:"الرفق بالحيوان وبكل مخلوقات الله هو سبب مباشر لنيل رحمة الله الواسعة."},{t:"من أقال مسلماً عثرته، أقال الله عثرته يوم القيامة.",e:"مسامحة الناس والتغاضي عن أخطائهم يجعل الله يتغاضى عن زلاتك يوم الحساب."},{t:"من يسر على معسر، يسر الله عليه في الدنيا والآخرة.",e:"مساعدة الأشخاص في الأزمات المالية أو المعنوية تجلب لك التيسير من الله في كل أمورك."},{t:"من أنظر معسراً أو وضع عنه، ظله الله في ظله يوم لا ظل إلا ظله.",e:"إعطاء المهلة للمدين أو مسامحته بالدين هو استثمار آمن للحصول على ظل الله يوم القيامة."},{t:"من ستر مسلماً، ستره الله في الدنيا والآخرة.",e:"عدم فضح عيوب الآخرين ونشر أسرارهم يضمن لك ستر الله لك في المواقف الصعبة."},{t:"من عاد مريضاً أو زار أخاً له في الله، ناداه منادٍ بأن طبت وطاب ممشاك.",e:"زيارة المرضى وصلة الأرحام لوجه الله تجلب لك البركة في صحتك وطريقك."},{t:"من أطعم جائعاً، سقاه الله من الرحيق المختوم.",e:"إطعام الطعام، خاصة للجائعين، هو من أعظم القربات التي تكافأ بأفضل شراب في الجنة."},{t:"من كسا مسلماً، كساه الله من خضر الجنة.",e:"مساعدة الآخرين في توفير الملابس أو الاحتياجات الأساسية تكافأ بملابس الجنة الفاخرة."},{t:"من أقرض الله قرضاً حسناً، ضاعفه الله له أضعافاً كثيرة.",e:"الصدقة والإنفاق في سبيل الله هو القرض الوحيد الذي يضمن الله مضاعفته بشكل هائل."},{t:"من دعا لأخيه بظهر الغيب، قال الملك الموكل به: آمين، ولك بمثل.",e:"الدعاء للآخرين في الخفاء يستجاب فوراً ويمنحك نفس الخير الذي دعوت به لغيرك."},{t:"من أصبح معافى في جسده، آمناً في سربه، عنده قوت يومه، فكأنما حيزت له الدنيا.",e:"تقدير النعم الأساسية (الصحة، الأمان، الرزق) هو مفتاح السعادة الحقيقية والرضا."},{t:"من حسن خلقه، حسن الله مقامه.",e:"الأخلاق الحسنة هي جواز سفرك لأعلى الدرجات عند الله وعند الناس."},{t:"من تواضع لله، رفعه الله.",e:"التواضع وعدم التكبر على الخلق يرفع الله قدرك ومنزلتك في الدنيا والآخرة."},{t:"من طلب العلم، فريضة على كل مسلم ومسلمة.",e:"السعي وراء المعرفة النافعة ليس خياراً، بل هو واجب ديني على كل فرد."},{t:"من مات وهو يطلب العلم، مات شهيداً.",e:"السعي المستمر لتعلم ما ينفع الدين والدنيا حتى آخر لحظة في الحياة له منزلة الشهداء."},{t:"من علم علماً، فله أجر من عمل به لا ينقص من أجر العامل شيئاً.",e:"نشر العلم النافع يمنحك أجراً مستمراً (صدقة جارية) دون أن ينقص من أجر المتعلم شيء."},{t:"من دل على خير، فله مثل أجر فاعله.",e:"التوجيه للإيجاب ومساعدة الآخرين على فعل الخير يمنحك نفس الأجر وكأنك فعلته بنفسك."},{t:"من أمر بالمعروف، كان له مثل أجر من أتاه.",e:"تشجيع الآخرين على فعل الصالحات يضيف لحسناتك باستمرار."},{t:"من نهى عن منكر، كان له مثل أجر من تركه.",e:"الإنكار على المنكر والمساهمة في تقليله في المجتمع يمنحك أجر من امتنع عن فعله."},{t:"من صبر على البلاء، كتبه الله صديقاً.",e:"الصبر عند المصيبة ليس مجرد تحمل، بل هو منزلة رفيعة عند الله تقربك منه جداً."},{t:"من شكر الناس، شكر الله.",e:"التقدير والامتنان للآخرين هو سبب مباشر لنيل شكر الله وزيادته في النعم."},{t:"من أوفى بالعهد، كان مع النبيين والصديقين.",e:"الالتزام بالوعود والعهود يرفع منزلتك لتكون مع أفضل الخلق يوم القيامة."},{t:"من أدى الأمانة، نجا من النار.",e:"الحفاظ على ما ائتمنك عليه الناس (أموال، أسرار، مهام) هو طريق النجاة من العذاب."},{t:"من بر والديه، فتح الله له بابي الجنة.",e:"طاعة الوالدين والإحسان إليهما هي أسرع طريق لدخول الجنة وأرضى لله."},{t:"من رحم والديه، رحمه الله.",e:"الرفق بالوالدين في كبرهما يجلب لك رحمة الله الواسعة في حياتك."},{t:"من وصل رحمه، وصله الله.",e:"صلة الأرحام وزيارة الأقارب تزيد في العمر وتوسع في الرزق وتصلك برحمة الله."},{t:"من أحسن إلى جاره، أحسن الله إليه.",e:"حقوق الجار في الإسلام عظيمة، وإحسانك له ينعكس مباشرة على حياتك بالخير."},{t:"من أكرم ضيفه، أكرمه الله.",e:"حسن استقبال الضيوف وإكرامهم هو علامة على كرم النفس ويجلب كرم الله لك."},{t:"من أنفق في سبيل الله، أخلف الله عليه.",e:"البذل والعطاء في وجوه الخير لا ينقص المال، بل يخلف الله عليك بأضعافه."},{t:"من تصدق بعدل تمرة من كسب طيب، يتقبلها الله بيمينه.",e:"الصدقة القليلة من مال حلال طيب لها شأن عظيم عند الله وتقبل خاص."},{t:"من سقى مسلماً، سقاه الله من الرحيق المختوم.",e:"إزالة العطش عن إنسان أو حيوان هي صدقة عظيمة تكافأ بأفضل شراب في الآخرة."},{t:"من أزال أذى عن الطريق، كتب الله له حسنة.",e:"المبادرة بإزالة العوائق والأذى من الطرق العامة هي صدقة يومية بسيطة وأجرها كبير."},{t:"من سلم على عشرة، كتب الله له عشر حسنات.",e:"نشر السلام وتحية الآخرين هي عادة بسيطة تزرع المحبة وتضاعف الحسنات."},{t:"من رد السلام، فقد برئ من الكبر.",e:"الرد على التحية بأحسن منها أو بمثلها هو علامة على التواضع وبراءة من التكبر."},{t:"من زار مريضاً، لم يزل في خرفة الجنة.",e:"مواساة المرضى وزيارتهم تمنحك جواً من راحة وجمال الجنة حتى تعود."},{t:"من شهد جنازة، فله قيراط.",e:"حضور الجنائز والاعتبار بالموت يذكرنا بالآخرة ويمنحنا أجراً عظيماً."},{t:"من صلى على جنازة، فله قيراطان.",e:"الصلاة على الميت والدعاء له يضاعف الأجر ويمنحك قيراطاً إضافياً."},{t:"من تبع جنازة حتى تقضى، فله ثلاثة قيراط.",e:"المشي مع الجنازة حتى الدفن والتسليم هو كمال الأجر في هذا الموقف العظيم."},{t:"من دعا بالهدى، كان له مثل أجر من اهتدى.",e:"نشر التوجيه الصحيح والدعاء للناس بالهداية يمنحك أجر من استجاب لهذا الهدى."},{t:"من استغفر للمؤمنين والمؤمنات، كتب الله له بكل مؤمن ومؤمنة حسنة.",e:"الدعاء بالمغفرة لجميع المسلمين هو كنز من الحسنات يتضاعف بعدد أمة محمد ﷺ."},{t:"من قال: لا إله إلا الله وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير، في يوم مائة مرة، كانت له عدل عشر رقاب.",e:"هذا الذكر العظيم يعادل عتق عشر رقاب ويحمي من الشيطان طوال اليوم."},{t:"من قال: سبحان الله وبحمده، في يوم مائة مرة، حطت خطاياه ولو كانت مثل زبد البحر.",e:"مداومة هذا التسبيح تمحو الذنوب مهما كانت كثرتها، بشرط الإخلاص."},{t:"من قال: لا حول ولا قوة إلا بالله، كانت له كنزاً من كنوز الجنة.",e:"هذه الكلمة هي اعتراف بالعجز عن الطاعة إلا بمعونة الله، وهي كنز حقيقي."},{t:"من قال: أستغفر الله العظيم الذي لا إله إلا هو الحي القيوم وأتوب إليه، غفر الله له وإن كان فر من الزحف.",e:"سيد الاستغفار يفتح أبواب المغفرة الواسعة حتى للذنوب الكبيرة."},{t:"من صلى عليّ حين يصبح عشراً وحين يمسي عشراً، أدركته شفاعتي يوم القيامة.",e:"الإكثار من الصلاة على النبي صباحاً ومساءً يضمن لك شفاعته ﷺ."},{t:"من حفظ على أمتي أربعين حديثاً، بعثه الله يوم القيامة فقيهاً عالماً.",e:"حفظ ونشر الأحاديث النبوية الشريفة يرفع منزلة صاحبه إلى درجة الفقهاء والعلماء."},{t:"من عمل بما يعلم، ورثه الله علم ما لم يعلم.",e:"العمل بالعلم المتاح هو المفتاح السحري لزيادة العلم والفهم من الله مباشرة."},{t:"من كان آخر كلامه من الدنيا لا إله إلا الله، دخل الجنة.",e:"الختم الحسن وتلقين كلمة التوحيد عند الموت هو بشارة بدخول الجنة بإذن الله."},{t:"من مات لا يشرك بالله شيئاً، دخل الجنة.",e:"حفظ التوحيد والإخلاص لله حتى الممات هو الضمان الأكيد لدخول الجنة."},{t:"من قال حين يسمع المؤذن: وأنا أشهد أن لا إله إلا الله وحده لا شريك له، وأن محمداً عبده ورسوله، غفر له ذنبه.",e:"ترديد الشهادتين بعد الأذان بصيغة محددة يضمن مغفرة الذنوب."},{t:"من سأل الله الشهادة بصدق، بلغه الله منازل الشهداء وإن مات على فراشه.",e:"النية الصادقة في طلب الشهادة في سبيل الله ترفع منزلة المتوفى على فراشه إلى درجة الشهداء."},{t:"من قرأ سورة الكهف في يوم الجمعة، أضاء له من النور ما بين الجمعتين.",e:"قراءة الكهف يوم الجمعة هي نور وهداية وحماية من فتنة الدجال لمدة أسبوع كامل."},{t:"من صلى ركعتين لا يسهو فيهما، غفر له ما تقدم من ذنبه.",e:"الخضوع والتركيز التام في ركعتين فقط يمكن أن يمحوا الماضي كله بفضل الله."},{t:"من توضأ فأسبغ الوضوء ثم صلى ركعتين يقبل عليهما بقلبه ووجهه، وجبت له الجنة.",e:"إتمام الوضوء والخشوع في ركعتين بعده هو طريق مضمون ومكتوب لصاحبه نحو الجنة."}];
 const longHadiths = [{t:"عن عمر بن الخطاب رضي الله عنه قال: بينما نحن جلوس عند رسول الله صلى الله عليه وسلم ذات يوم، إذ طلع علينا رجل شديد بياض الثياب، شديد سواد الشعر، لا يرى عليه أثر السفر، ولا يعرفه منا أحد، حتى جلس إلى النبي صلى الله عليه وسلم، فأسند ركبتيه إلى ركبتيه، ووضع كفيه على فخذيه، وقال: يا محمد، أخبرني عن الإسلام. فقال رسول الله صلى الله عليه وسلم: الإسلام أن تشهد أن لا إله إلا الله وأن محمداً رسول الله، وتقيم الصلاة، وتؤتي الزكاة، وتصوم رمضان، وتحج البيت إن استطعت إليه سبيلاً. قال: صدقت. فعجبنا له، يسأله ويصدقه. قال: فأخبرني عن الإيمان. قال: أن تؤمن بالله، وملائكته، وكتبه، ورسله، واليوم الآخر، وتؤمن بالقدر خيره وشره. قال: صدقت. قال: فأخبرني عن الإحسان. قال: أن تعبد الله كأنك تراه، فإن لم تكن تراه فإنه يراك. قال: فأخبرني عن الساعة. قال: ما المسؤول عنها بأعلم من السائل. قال: فأخبرني عن أماراتها. قال: أن تلد الأمة ربتها، وأن ترى الحفاة العراة العالة رعاء الشاء يتطاولون في البنيان. ثم انطلق، فلبثت ملياً، ثم قال لي: يا عمر، أتدري من السائل؟ قلت: الله ورسوله أعلم. قال: فإنه جبريل، أتاكم يعلمكم دينكم.",e:"هذا الحديث العظيم يُسمى 'أصل السنة'، وهو يجمع أصول الدين الثلاثة: الإسلام (الأعمال الظاهرة)، والإيمان (الأعمال الباطنة)، والإحسان (إتقان العبادة)، ويذكر أشراط الساعة الكبرى والصغرى."},{t:"عن أبي هريرة رضي الله عنه قال: قال رسول الله صلى الله عليه وسلم: 'سبعة يظلهم الله في ظله يوم لا ظل إلا ظله: الإمام العادل، وشاب نشأ في عبادة الله، ورجل قلبه معلق في المساجد، ورجلان تحابا في الله اجتمعا عليه وتفرقا عليه، ورجل طلبته امرأة ذات منصب وجمال فقال: إني أخاف الله، ورجل تصدق بصدقة فأخفاها حتى لا تعلم شماله ما تنفق يمينه، ورجل ذكر الله خالياً ففاضت عيناه'.",e:"يحدد هذا الحديث سبع فئات من الناس ينالون شرف الظل الإلهي يوم القيامة، وهي نماذج راقية في العدل، والشباب، والعبادة، والحب في الله، والعفة، والإخلاص، والخشية."},{t:"عن أبي هريرة رضي الله عنه قال: قال رسول الله صلى الله عليه وسلم: 'حق المسلم على المسلم ست: إذا لقيته فسلم عليه، وإذا دعاك فأجبه، وإذا استنصحك فانصح له، وإذا عطس فحمد الله فشمته، وإذا مرض فعده، وإذا مات فاتبعه'.",e:"يضع هذا الحديث منهجاً متكاملاً للعلاقات الاجتماعية بين المسلمين، يجمع بين التحية، والاستجابة، والنصح، والدعاء، والمواساة، والوفاء حتى بعد الممات."},{t:"عن النعمان بن بشير رضي الله عنهما قال: سمعت رسول الله صلى الله عليه وسلم يقول: 'ألا وإن في الجسد مضغة، إذا صلحت صلح الجسد كله، وإذا فسدت فسد الجسد كله، ألا وهي القلب'.",e:"يؤكد هذا الحديث على أن القلب هو ملك الجسد، وصلاح الأعمال الظاهرة والباطنة مرهون بصلاح القلب وسلامته من الأمراض مثل الحسد والكبر والرياء."},{t:"عن أبي هريرة رضي الله عنه قال: قال رسول الله صلى الله عليه وسلم: 'لا يزني الزاني حين يزني وهو مؤمن، ولا يشرب الخمر حين يشربها وهو مؤمن، ولا يسرق السارق حين يسرق وهو مؤمن، ولا ينتهب نهبة يرفع الناس إليه فيها أبصارهم وهو مؤمن'.",e:"يوضح هذا الحديث أن المعاصي الكبيرة تنفي كمال الإيمان عن صاحبها وقت ارتكابها، وهي تحذير شديد من أن تذهب المعصية بنور الإيمان من القلب مؤقتاً."}];
 const allHadiths = [...hadithsData, ...longHadiths];
@@ -534,6 +629,7 @@ const adhkarData = {morning: [{text:"أَصْـبَحْنا وَأَصْـبَح
 const sheikhServers={'afs':{name:'مشاري العفاسي',url:'https://server8.mp3quran.net/afs/',quranComReciter:8},'basit':{name:'عبد الباسط عبد الصمد (مرتل)',url:'https://server7.mp3quran.net/basit/',quranComReciter:1},'maher':{name:'ماهر المعيقلي',url:'https://server12.mp3quran.net/maher/',quranComReciter:4},'shuraim':{name:'سعود الشريم',url:'https://server7.mp3quran.net/shur/',quranComReciter:12},'sudais':{name:'عبد الرحمن السديس',url:'https://server11.mp3quran.net/sds/',quranComReciter:2},'ghamdi':{name:'سعد الغامدي',url:'https://server7.mp3quran.net/s_gmd/',quranComReciter:7},'dosari':{name:'ياسر الدوسري',url:'https://server11.mp3quran.net/yasser/',quranComReciter:7},'qatami':{name:'ناصر القطامي',url:'https://server6.mp3quran.net/qtm/',quranComReciter:7}};
 const namesOfAllah=[{name:"الله",meaning:"الاسم الجامع لأسماء الله الحسنى، وهو الاسم الأعظم الذي تفرد به الحق سبحانه، ويدل على ألوهيته وربوبيته وأسمائه وصفاته."},{name:"الرَّحْمَنُ",meaning:"ذو الرحمة الواسعة الشاملة لجميع الخلق في الدنيا والآخرة."},{name:"الرَّحِيمُ",meaning:"الموصل للرحمة الخاصة إلى المؤمنين يوم القيامة."},{name:"المَلِكُ",meaning:"المالك المطلق المتصرف في الكون بلا منازع."},{name:"القُدُّوسُ",meaning:"الطاهر المنزه عن كل نقص وعيب."},{name:"السَّلَامُ",meaning:"السلام من كل عيب، ومصدر السلام والأمان."},{name:"المُؤْمِنُ",meaning:"المصدق لرسله وآياته، والمؤمِّن لعباده من الخوف."},{name:"المُهَيْمِنُ",meaning:"الرقيب الحافظ المسيطر على كل شيء."},{name:"العَزِيزُ",meaning:"الغالب الذي لا يُقهر، ذو العزة المطلقة."},{name:"الجَبَّارُ",meaning:"الذي تنفذ مشيئته قهراً، والمصلح لأحوال عباده."},{name:"المُتَكَبِّرُ",meaning:"المتفرد بالعظمة والكبرياء فوق كل مخلوق."},{name:"الخَالِقُ",meaning:"الموجد للأشياء من العدم على غير مثال."},{name:"البَارِئُ",meaning:"المبدع للخلق بلا سابقة، الفاصل بين المخلوقات."},{name:"المُصَوِّرُ",meaning:"الذي يعطي كل مخلوق صورته المميزة."},{name:"الغَفَّارُ",meaning:"كثير المغفرة، يستر الذنوب ويغفرها مراراً."},{name:"القَهَّارُ",meaning:"الذي قهر كل شيء وخضع له كل الخلق."},{name:"الوَهَّابُ",meaning:"كثير العطاء والمنح بلا مقابل."},{name:"الرَّزَّاقُ",meaning:"المتكفل بالرزق لجميع المخلوقات."},{name:"الفَتَّاحُ",meaning:"الذي يفتح أبواب الرحمة والرزق والفرج."},{name:"العَلِيمُ",meaning:"المحيط علمه بكل شيء ظاهر وباطن."},{name:"القَابِضُ",meaning:"الذي يقبض الأرزاق والأرواح بحكمته."},{name:"البَاسِطُ",meaning:"الذي يبسط الرزق والرحمة لمن يشاء."},{name:"الخَافِضُ",meaning:"الذي يخفض المتكبرين والأذلاء."},{name:"الرَّافِعُ",meaning:"الذي يرفع المؤمنين والطائعين."},{name:"المُعِزُّ",meaning:"الذي يعز من يشاء بطاعته."},{name:"المُذِلُّ",meaning:"الذي يذل من يشاء بمعصيته."},{name:"السَّمِيعُ",meaning:"الذي يسمع كل شيء ولا يخفى عليه صوت."},{name:"البَصِيرُ",meaning:"الذي يرى كل شيء ويدرك تفاصيله."},{name:"الحَكَمُ",meaning:"الحاكم الذي لا راد لقضائه."},{name:"العَدْلُ",meaning:"الذي لا يجور، أعطى كل ذي حق حقه."},{name:"اللَّطِيفُ",meaning:"البر الخبير الذي يصل لطفه للأشياء الدقيقة."},{name:"الخَبِيرُ",meaning:"العالم بدقائق الأمور وخفاياها."},{name:"الحَلِيمُ",meaning:"الذي لا يعاجل بالعقوبة بل يمهل ويتجاوز."},{name:"العَظِيمُ",meaning:"الذي لا أعظم منه في ذاته وصفاته."},{name:"الغَفُورُ",meaning:"واسع المغفرة يستر الذنوب."},{name:"الشَّكُورُ",meaning:"يشكر القليل من العمل ويعطي الكثير."},{name:"العَلِيُّ",meaning:"المتعال فوق كل شيء قدراً ومكانة."},{name:"الكَبِيرُ",meaning:"العظيم الذي لا شيء أعظم منه."},{name:"الحَفِيظُ",meaning:"الحافظ لكل شيء من الزوال والضياع."},{name:"المُقِيتُ",meaning:"المقتدر على إعطاء القوت والحاجة."},{name:"الحَسِيبُ",meaning:"الكافي عباده، والمحاسب لهم على أعمالهم."},{name:"الجَلِيلُ",meaning:"العظيم في ذاته وصفاته وأفعاله."},{name:"الكَرِيمُ",meaning:"الذي يعطي بلا حدود ولا ينقطع عطاؤه."},{name:"الرَّقِيبُ",meaning:"المراقب لكل شيء لا يغيب عنه شيء."},{name:"المُجِيبُ",meaning:"الذي يجيب الداعي ويستجيب للسائلين."},{name:"الوَاسِعُ",meaning:"الذي وسع رزقه ورحمته كل شيء."},{name:"الحَكِيمُ",meaning:"الذي يضع كل شيء في موضعه المناسب."},{name:"الوَدُودُ",meaning:"المحب لعباده المؤمنين والمحبوب في قلوبهم."},{name:"المَجِيدُ",meaning:"الشريف في ذاته وأفعاله واسع الكرم."},{name:"البَاعِثُ",meaning:"الذي يبعث الموتى للحساب والجزاء."},{name:"الشَّهِيدُ",meaning:"الحاضر الشاهد على كل شيء."},{name:"الحَقُّ",meaning:"الثابت الوجود الحق في أقواله وأفعاله."},{name:"الوَكِيلُ",meaning:"الكافي المتولي لأمور عباده."},{name:"القَوِيُّ",meaning:"التام القوة الذي لا يعجزه شيء."},{name:"المَتِينُ",meaning:"الشديد القوة الذي لا يضعف."},{name:"الوَلِيُّ",meaning:"الناصر المتولي لأمور المؤمنين."},{name:"الحَمِيدُ",meaning:"المستحق للحمد والثناء في كل حال."},{name:"المُحصِي",meaning:"الذي أحصى كل شيء بعلمه وعدده."},{name:"المُبدِئُ",meaning:"الذي بدأ الخلق وأوجده من العدم."},{name:"المُعِيدُ",meaning:"الذي يعيد الخلق بعد الموت."},{name:"المُحْيِي",meaning:"الذي يعطي الحياة ويحيي الموتى."},{name:"المُمِيتُ",meaning:"الذي يسلب الحياة ويميت الخلائق."},{name:"الحَيُّ",meaning:"ذو الحياة الكاملة الأبدية."},{name:"القَيُّومُ",meaning:"القائم بنفسه المدبر لكل شيء."},{name:"الوَاجِدُ",meaning:"الذي لا يعوزه شيء ويجد كل ما يريد."},{name:"المَاجِدُ",meaning:"ذو المجد الكامل والفضل الواسع."},{name:"الوَاحِدُ",meaning:"الفرد الذي لا شريك له."},{name:"الصَّمَدُ",meaning:"المقصود في الحوائج الذي لا يحتاج لأحد."},{name:"القَادِرُ",meaning:"ذو القدرة المطلقة على كل شيء."},{name:"المُقْتَدِرُ",meaning:"الكامل القدرة الذي لا يعجزه شيء."},{name:"المُقَدِّمُ",meaning:"الذي يقدم الأشياء في مواضعها."},{name:"المُؤَخِّرُ",meaning:"الذي يؤخر الأشياء بحكمته."},{name:"الأَوَّلُ",meaning:"الذي لا بداية لوجوده."},{name:"الآخِرُ",meaning:"الذي لا نهاية لوجوده."},{name:"الظَّاهِرُ",meaning:"الذي ظهرت آياته في كل مكان."},{name:"البَاطِنُ",meaning:"المحتجب عن الأبصار العالم بالأسرار."},{name:"الوَالِي",meaning:"المالك المتولي لتدبير الكون."},{name:"المُتَعَالِي",meaning:"المنزه عن صفات المخلوقين."},{name:"البَرُّ",meaning:"المحسن إلى عباده الصادق في وعده."},{name:"التَّوَّابُ",meaning:"كثير قبول التوبة عن عباده."},{name:"المُنْتَقِمُ",meaning:"الذي ينتصف من الظالمين ويجازي العصاة."},{name:"العَفُوُّ",meaning:"الذي يصفح عن الذنوب ويمحوها."},{name:"الرَّؤُوفُ",meaning:"شديد الرحمة والرأفة بعباده."},{name:"مَالِكُ المُلْكِ",meaning:"المالك المطلق المتصرف في الملك."},{name:"ذُو الجَلَالِ وَالإكْرَامِ",meaning:"المنفرد بالجلال والكمال المستحق للإكرام."},{name:"المُقْسِطُ",meaning:"العادل الذي يعطي كل ذي حق حقه."},{name:"الجَامِعُ",meaning:"الذي يجمع الخلق ليوم لا ريب فيه."},{name:"الغَنِيُّ",meaning:"المستغني عن كل ما سواه."},{name:"المُغْنِي",meaning:"الذي يعطي الغنى لعباده."},{name:"المَانِعُ",meaning:"الذي يمنع الضرر والعطاء بحكمته."},{name:"الضَّارُّ",meaning:"المقدر للضرر لحكمة بالغة."},{name:"النَّافِعُ",meaning:"مصدر كل نفع وخير."},{name:"النُّورُ",meaning:"الهادي المنير للكون والقلوب."},{name:"الهَادِي",meaning:"الذي يهدي الخلق إلى الحق."},{name:"البَدِيعُ",meaning:"المبدع للخلق على غير مثال سابق."},{name:"البَاقِي",meaning:"الدائم الذي لا يزول ولا يفنى."},{name:"الوَارِثُ",meaning:"الباقي بعد فناء كل شيء."},{name:"الرَّشِيدُ",meaning:"المرشد للخلق إلى ما ينفعهم."},{name:"الصَّبُورُ",meaning:"الذي لا يعاجل بالعقوبة ويمهل."}];
 const angelsData = [{name: "جبريل عليه السلام", duty: "موكل بالوحي، نزل بالقرآن على النبي محمد ﷺ، وأيده بالنصر.", icon: "📜"},{name: "ميكائيل عليه السلام", duty: "موكل بالقطر (المطر) والرزق والنبات، يسوقه حيث يشاء الله.", icon: "🌧️"},{name: "إسرافيل عليه السلام", duty: "موكل بالنفخ في الصور يوم القيامة لإحياء الموتى.", icon: "📯"},{name: "ملك الموت (عزرائيل)", duty: "موكل بقبض أرواح العباد عند انتهاء آجالهم بأمر الله.", icon: "⏳"},{name: "مالك عليه السلام", duty: "خازن النار، موكل بها وبزجر أهلها، لا يعصي الله فيما أمره.", icon: "🔥"},{name: "رضوان عليه السلام", duty: "خازن الجنة، موكل باستقبال أهلها وإكرامهم وإدخالهم إياها.", icon: "🌴"},{name: "منكر ونكير", duty: "موكلان بفتنة العبد في قبره بعد دفنه وسؤاله عن ربه ودينه ونبيه.", icon: "⚖️"},{name: "رقيب وعتيد", duty: "موكلان بكتابة أعمال العبد، رقيب عن اليمين (للحسنات) وعتيد عن الشمال (للسيات).", icon: "📝"},{name: "حملة العرش", duty: "ملائكة عظام يحملون عرش الرحمن ويسبحون بحمده ويستغفرون للمؤمنين.", icon: "👑"},{name: "الحفظة (معقبات)", duty: "ملائكة يحفظون العبد من الأمام ومن الخلف بأمر الله من كل مكروه.", icon: "🛡️"},{name: "خزنة الجنة", duty: "ملائكة موكلون بخدمة أهل الجنة وتلبية احتياجاتهم.", icon: "🏰"},{name: "خزنة النار (الزبانية)", duty: "ملائكة غلاظ شداد موكلون بعذاب أهل النار، لا يعصون الله ما أمرهم.", icon: "⛓️"},{name: "موكل بالأجنة", duty: "موكل بنفخ الروح في الجنين وكتابة رزقه وأجله وعمله وشقي أو سعيد.", icon: "👶"},{name: "موكل بالجبال", duty: "موكل بتدبير الجبال وحركتها وتثبيت الأرض بأمر الله.", icon: "⛰️"},{name: "السيّاحون", duty: "ملائكة يطوفون في الأرض يلتمسون مجالس الذكر ويحفظونها ويحيطون بأهلها.", icon: "🌬️"}];
+
 let currentSurahId=null,currentSurahName='',currentAyahNumber=null,currentSearchQuery='';
 let currentVerseTimings=[],wordHighlightInterval=null,verseTimingsCache={},isAudioLoaded=false;
 window.addEventListener('load',()=>setTimeout(()=>document.getElementById('splashScreen').classList.add('hidden'),2500));
@@ -544,7 +640,6 @@ function toggleTheme(){
   document.getElementById('themeBtn').textContent = isLight ? '🌙' : '☀️';
   localStorage.setItem('theme', isLight ? 'light' : 'dark');
 }
-
 if(localStorage.getItem('theme') === 'light'){
   document.body.classList.add('light-mode');
   document.getElementById('themeBtn').textContent = '🌙';
@@ -639,18 +734,13 @@ function filterRadiosByCategory(cat, el) {currentRadioCategory = cat;document.qu
 function playRadio(name, url) {audioEl.src = url;document.getElementById('playerTitle').textContent = `📻 ${name}`;document.getElementById('playerSheikh').textContent = 'إذاعة مباشرة';playerUI.classList.add('active');audioEl.play().then(() => {isPlaying = true;playPauseBtn.textContent = '⏸';progressBar.value = 0;currentTimeEl.textContent = 'مباشر';durationTimeEl.textContent = '∞';stopWordHighlight();showToast('▶️ جاري تشغيل الإذاعة...');}).catch(err => {console.error(err);showToast('⚠️ تعذر تشغيل الإذاعة - جرب واحدة أخرى');});}
 const fab=document.getElementById('whatsappFab');let isDragging=false;let hasMoved=false;let startX,startY,initialLeft,initialTop;let lastInteraction=Date.now();let fadeCheckInterval=null;function resetInteractionTimer(){lastInteraction=Date.now();if(fab.classList.contains('faded')){fab.classList.remove('faded');fab.classList.add('pulse');}}function startFadeTimer(){if(fadeCheckInterval) clearInterval(fadeCheckInterval);fadeCheckInterval=setInterval(()=>{if(!isDragging && Date.now()-lastInteraction>=3000){fab.classList.add('faded');fab.classList.remove('pulse');}},500);}['mousedown','touchstart','click','mousemove'].forEach(ev=>{window.addEventListener(ev,resetInteractionTimer,{passive:true});});let fabMoveThrottle=null;window.addEventListener('mousemove',()=>{if(fabMoveThrottle) return;fabMoveThrottle=setTimeout(()=>{fabMoveThrottle=null},100);resetInteractionTimer();});const handleStart=(e)=>{isDragging=true;hasMoved=false;resetInteractionTimer();const clientX=e.touches?e.touches[0].clientX:e.clientX;const clientY=e.touches?e.touches[0].clientY:e.clientY;startX=clientX;startY=clientY;const rect=fab.getBoundingClientRect();initialLeft=rect.left;initialTop=rect.top;fab.style.transition='none';};const handleMove=(e)=>{if(!isDragging) return;resetInteractionTimer();const clientX=e.touches?e.touches[0].clientX:e.clientX;const clientY=e.touches?e.touches[0].clientY:e.clientY;if(Math.abs(clientX-startX)>5||Math.abs(clientY-startY)>5){hasMoved=true;e.preventDefault();}let newLeft=initialLeft+(clientX-startX);let newTop=initialTop+(clientY-startY);const maxX=window.innerWidth-fab.offsetWidth;const maxY=window.innerHeight-fab.offsetHeight-70;newLeft=Math.max(10,Math.min(newLeft,maxX));newTop=Math.max(10,Math.min(newTop,maxY));fab.style.left=`${newLeft}px`;fab.style.top=`${newTop}px`;fab.style.bottom='auto';};const handleEnd=()=>{isDragging=false;fab.style.transition='opacity 0.5s ease, transform 0.2s, box-shadow 0.2s';resetInteractionTimer();};fab.addEventListener('mousedown',handleStart);fab.addEventListener('touchstart',handleStart,{passive:false});window.addEventListener('mousemove',handleMove);window.addEventListener('touchmove',handleMove,{passive:false});window.addEventListener('mouseup',handleEnd);window.addEventListener('touchend',handleEnd);fab.addEventListener('click',(e)=>{resetInteractionTimer();if(hasMoved){e.preventDefault();e.stopPropagation()}});startFadeTimer();
 
-// ====== كود البوصلة المُصلَح ======
+// ====== كود البوصلة الاحترافي والمُصلَح ======
 let qiblaAngle = 0;
 let currentHeading = 0;
-let isQiblaActive = false;
-let orientationHandlerAttached = false;
-
-const MECCA_LAT = 21.4225;
-const MECCA_LON = 39.8262;
 
 function calculateQibla(lat, lon) {
-    const phiK = MECCA_LAT * Math.PI / 180.0;
-    const lambdaK = MECCA_LON * Math.PI / 180.0;
+    const phiK = 21.4225 * Math.PI / 180.0;
+    const lambdaK = 39.8262 * Math.PI / 180.0;
     const phi = lat * Math.PI / 180.0;
     const lambda = lon * Math.PI / 180.0;
     const y = Math.sin(lambdaK - lambda);
@@ -659,124 +749,118 @@ function calculateQibla(lat, lon) {
     return (qibla + 360) % 360;
 }
 
-function initQiblaCompass() {
+function activateCompass() {
+    const btn = document.getElementById('activateQiblaBtn');
     const info = document.getElementById('qiblaInfo');
-    if (!info) return;
-    info.textContent = 'جاري تحديد الموقع الجغرافي...';
-    info.style.background = 'var(--gold-bg)';
+    btn.disabled = true;
+    btn.textContent = '⏳ جاري تحديد الموقع...';
+    info.textContent = 'يرجى السماح بالوصول إلى الموقع الجغرافي...';
 
-    if (!navigator.geolocation) {
-        info.textContent = '⚠️ متصفحك لا يدعم تحديد الموقع الجغرافي.';
-        return;
-    }
+    navigator.geolocation.getCurrentPosition(
+        (pos) => {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            qiblaAngle = calculateQibla(lat, lon);
 
-    navigator.geolocation.getCurrentPosition((pos) => {
-        const lat = pos.coords.latitude;
-        const lon = pos.coords.longitude;
-        qiblaAngle = calculateQibla(lat, lon);
-        info.textContent = `✅ اتجاه القبلة: ${Math.round(qiblaAngle)}° من الشمال`;
-        startOrientationListener();
-        isQiblaActive = true;
-    }, (err) => {
-        info.textContent = '⚠️ تعذر تحديد الموقع. يرجى السماح بالوصول للموقع.';
-    }, { enableHighAccuracy: true, timeout: 10000 });
-}
+            // حفظ الموقع للاستخدام أوفلاين لاحقاً
+            localStorage.setItem('qibla_data', JSON.stringify({
+                lat, lon, angle: qiblaAngle, date: new Date().toLocaleDateString('ar-EG')
+            }));
 
-function startOrientationListener() {
-    if (orientationHandlerAttached) return;
-    
-    // محاولة طلب الإذن للآيفون (iOS 13+)
-    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-        DeviceOrientationEvent.requestPermission().then(response => {
-            if (response === 'granted') {
-                attachOrientationHandlers();
-            } else {
-                const info = document.getElementById('qiblaInfo');
-                if (info) info.textContent = '⚠️ تم رفض إذن البوصلة. يرجى السماح من إعدادات المتصفح.';
+            info.textContent = `✅ تم تحديد الموقع. زاوية القبلة: ${Math.round(qiblaAngle)}°`;
+            document.getElementById('offlineQiblaBtn').style.display = 'flex';
+
+            // طلب إذن مستشعر الحركة
+            requestOrientationPermission();
+        },
+        (err) => {
+            info.textContent = '⚠️ فشل تحديد الموقع. تأكد من تفعيل GPS والموافقة على الصلاحيات.';
+            btn.disabled = false;
+            btn.textContent = '🧭 إعادة المحاولة';
+            if(localStorage.getItem('qibla_data')) {
+                document.getElementById('offlineQiblaBtn').style.display = 'flex';
             }
-        }).catch(err => {
-            console.warn('Permission error:', err);
-            attachOrientationHandlers();
-        });
-    } else {
-        attachOrientationHandlers();
-    }
+        },
+        { enableHighAccuracy: true, timeout: 15000 }
+    );
 }
 
-function attachOrientationHandlers() {
-    if (orientationHandlerAttached) return;
-    window.addEventListener('deviceorientationabsolute', handleOrientation, true);
-    window.addEventListener('deviceorientation', handleOrientation, true);
-    orientationHandlerAttached = true;
+function requestOrientationPermission() {
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
+        DeviceOrientationEvent.requestPermission()
+            .then(response => {
+                if (response === 'granted') {
+                    window.addEventListener('deviceorientation', handleOrientation, true);
+                    document.getElementById('activateQiblaBtn').textContent = '🔄 إعادة ضبط البوصلة';
+                    document.getElementById('activateQiblaBtn').disabled = false;
+                } else {
+                    document.getElementById('qiblaInfo').textContent = '⚠️ تم رفض إذن مستشعر الحركة.';
+                }
+            })
+            .catch(console.error);
+    } else {
+        window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+        window.addEventListener('deviceorientation', handleOrientation, true);
+        document.getElementById('activateQiblaBtn').textContent = '🔄 إعادة ضبط البوصلة';
+        document.getElementById('activateQiblaBtn').disabled = false;
+    }
 }
 
 function handleOrientation(event) {
-    let heading = null;
-    
-    // iOS Safari
+    let heading = 0;
     if (event.webkitCompassHeading !== undefined && event.webkitCompassHeading !== null) {
-        heading = event.webkitCompassHeading;
+        heading = event.webkitCompassHeading; // iOS
+    } else if (event.alpha !== null) {
+        heading = 360 - event.alpha; // Android
     }
-    // Android
-    else if (event.alpha !== null) {
-        if (event.absolute) {
-            heading = 360 - event.alpha;
-        } else {
-            heading = 360 - event.alpha;
-        }
-    }
-    
-    if (heading === null || isNaN(heading)) return;
-    
-    currentHeading = heading;
-    const compass = document.getElementById('qiblaCompass');
-    if (!compass) return;
 
-    // البوصلة تدور بحيث تكون الكعبة (في الأعلى) في اتجاه القبلة
-    const rotation = qiblaAngle - currentHeading;
-    compass.style.transform = `rotate(${rotation}deg)`;
+    currentHeading = heading;
+    const dial = document.getElementById('compassDial');
+    if (dial) {
+        // تدوير القرص بحيث تشير أيقونة الكعبة إلى زاوية القبلة بالنسبة للشمال
+        const rotation = qiblaAngle - currentHeading;
+        dial.style.transform = `rotate(${rotation}deg)`;
+    }
+}
+
+function useOfflineQibla() {
+    const data = JSON.parse(localStorage.getItem('qibla_data'));
+    if (data) {
+        qiblaAngle = data.angle;
+        document.getElementById('qiblaInfo').textContent = `📴 وضع أوفلاين: القبلة ${Math.round(qiblaAngle)}° (محفوظ بتاريخ ${data.date})`;
+        requestOrientationPermission();
+    }
 }
 // ==========================================
 
-document.addEventListener('DOMContentLoaded',()=>{renderHadiths();renderQuran();filterAdhkar('morning',document.querySelector('#adhkar-section .tab'));checkBookmark();checkHadithBookmark();renderTasbih();renderNamesOfAllah();renderAngels();initPrayerTimes();fetchRadioStations('', 50);
+document.addEventListener('DOMContentLoaded',()=>{
+    renderHadiths();renderQuran();filterAdhkar('morning',document.querySelector('#adhkar-section .tab'));
+    checkBookmark();checkHadithBookmark();renderTasbih();renderNamesOfAllah();renderAngels();
+    initPrayerTimes();fetchRadioStations('', 50);
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => console.log('تم تسجيل عامل الخدمة بنجاح:', registration.scope))
-      .catch(error => console.log('فشل تسجيل عامل الخدمة:', error));
-  });
-}
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js')
-    .then(registration => {
-      console.log('تم تسجيل Service Worker:', registration.scope);
-      setInterval(() => {
-        registration.update();
-      }, 60 * 60 * 1000);
-      registration.addEventListener('updatefound', () => {
-        const newWorker = registration.installing;
-        newWorker.addEventListener('statechange', () => {
-          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            if (confirm('🎉 يوجد تحديث جديد للتطبيق! هل تريد التحديث الآن؟')) {
-              newWorker.postMessage({ action: 'skipWaiting' });
-              window.location.reload();
-            }
-          }
-        });
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js')
+        .then(registration => {
+          console.log('تم تسجيل Service Worker:', registration.scope);
+          setInterval(() => { registration.update(); }, 60 * 60 * 1000);
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                if (confirm('🎉 يوجد تحديث جديد للتطبيق! هل تريد التحديث الآن؟')) {
+                  newWorker.postMessage({ action: 'skipWaiting' });
+                  window.location.reload();
+                }
+              }
+            });
+          });
+        })
+        .catch(error => console.log('فشل تسجيل Service Worker:', error));
+      
+      navigator.serviceWorker.addEventListener('message', event => {
+        if (event.data.action === 'reload') window.location.reload();
       });
-    })
-    .catch(error => {
-      console.log('فشل تسجيل Service Worker:', error);
-    });
-  
-  navigator.serviceWorker.addEventListener('message', event => {
-    if (event.data.action === 'reload') {
-      window.location.reload();
     }
-  });
-}
 });
 </script>
 </body>
