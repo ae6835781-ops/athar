@@ -1,8 +1,8 @@
 {
   "name": "أَثَر | Athar",
   "short_name": "أَثَر | Athar",
-  "description": "تطبيق أَثَر الإسلامي - قرآن، أحاديث، أذكار، ومواقيت صلاة",
-  "start_url": "./",
+  "description": "تطبيق أَثَر الإسلامي",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#000000",
