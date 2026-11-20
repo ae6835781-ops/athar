@@ -1,4 +1,4 @@
-const CACHE_NAME = 'athar-offline-v9';
+const CACHE_NAME = 'athar-v10-final';
 const urlsToCache = [
   './',
   './index.html',
@@ -7,53 +7,39 @@ const urlsToCache = [
   './icon-512x512.png'
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache).catch(err => console.warn('فشل حفظ ملف:', err));
-    })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
   );
   self.skipWaiting();
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) return caches.delete(cacheName);
-        })
-      );
-    })
+    caches.keys().then(keys => 
+      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+    )
   );
   self.clients.claim();
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-
+  
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) return cachedResponse;
-
-      return fetch(event.request).then((networkResponse) => {
-        if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-          return networkResponse;
-        }
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-        return networkResponse;
+    caches.match(event.request).then(cached => {
+      if (cached) return cached;
+      
+      return fetch(event.request).then(response => {
+        if (!response || response.status !== 200) return response;
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        return response;
       }).catch(() => {
-        if (event.request.mode === 'navigate' || event.request.headers.get('accept').includes('text/html')) {
+        if (event.request.headers.get('accept').includes('text/html')) {
           return caches.match('./index.html');
         }
       });
     })
   );
-});
-
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.action === 'skipWaiting') self.skipWaiting();
 });
