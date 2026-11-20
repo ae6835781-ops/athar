@@ -449,7 +449,7 @@ body.light-mode {
 <div class="prayer-list" id="prayerList"></div>
 </section>
 
-<!-- ====== قسم البوصلة ====== -->
+<!-- ====== قسم البوصلة (تم إضافة زر التفعيل هنا) ====== -->
 <section id="qibla-section" class="section">
     <h2 class="section-title">🧭 اتجاه القبلة</h2>
     <div class="qibla-container">
@@ -464,7 +464,10 @@ body.light-mode {
             <div class="compass-center-dot"></div>
             <div class="kaaba-icon" id="kaabaIcon">🕋</div>
         </div>
-        <div class="qibla-info" id="qiblaInfo">جاري تحديد الموقع والاتجاه...</div>
+        <div class="qibla-info" id="qiblaInfo">اضغط الزر لتفعيل البوصلة</div>
+        <button class="tasbih-ctrl-btn" id="activateQiblaBtn" onclick="activateCompass()" style="margin-top:20px;background:var(--primary);color:#fff;border:none;padding:14px 30px;font-size:1rem;font-weight:700;border-radius:12px;width:100%;max-width:300px;">
+            🧭 تفعيل البوصلة
+        </button>
         <p class="qibla-note">💡 امسك الهاتف بشكل مسطح، وستدور البوصلة تلقائياً مع حركة الهاتف.</p>
     </div>
 </section>
